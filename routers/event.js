@@ -6,7 +6,7 @@ const router = new express.Router();
 
 // creating new event 
 
-router.post('/events', async (req, res) => {
+router.post('/event/add', async (req, res) => {
     const event = new Event(req.body);
     try {
         await event.save();

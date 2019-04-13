@@ -6,7 +6,7 @@ let amount;
 
 // create a ticket
 
-router.post('/events/ticket/add/:id', async (req, res) => {
+router.post('/event/ticket/add/:id', async (req, res) => {
     const ticket = new Ticket({
         ...req.body,
         event: req.params.id
@@ -21,7 +21,7 @@ router.post('/events/ticket/add/:id', async (req, res) => {
 
 // getting all tickets
 
-router.get('/events/ticket', async (req, res) => {
+router.get('/event/ticket', async (req, res) => {
     try {
         const allTickets = await Ticket.find({}).populate('event');
         if (!allTickets) {
@@ -37,7 +37,7 @@ router.get('/events/ticket', async (req, res) => {
 
 // getting specific tickets for specific event
 
-router.get('/events/ticket/:id', async (req, res) => {
+router.get('/event/ticket/:id', async (req, res) => {
     try {
         const specificTicket = await Ticket.findById(
             req.params.id
@@ -55,7 +55,7 @@ router.get('/events/ticket/:id', async (req, res) => {
 
 // editing a specific ticket
 
-router.patch('/events/ticket/edit/:id', async (req, res) => {
+router.patch('/event/ticket/edit/:id', async (req, res) => {
     try {
         const editTicket = await Ticket.findById(req.params.id)
             .populate('event');
@@ -83,7 +83,7 @@ router.patch('/events/ticket/edit/:id', async (req, res) => {
 
 // buying a ticket
 
-router.patch('/events/ticket/buy/:id', async (req, res) => {
+router.patch('/event/ticket/buy/:id', async (req, res) => {
     try {
         const buyTicket = await Ticket.findById(req.params.id)
             .populate('event');

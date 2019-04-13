@@ -10,7 +10,7 @@ beforeEach(setupDatabase);
 
 
 test("should create a new event", async () => {
-    const response = await request(app).post('/events').send({
+    const response = await request(app).post('/event/add').send({
         name: 'Opera Tour',
         description: 'World Wide Tour',
         date: "2019-06-13 20:00:00"
@@ -22,7 +22,7 @@ test("should create a new event", async () => {
 });
 
 test("Should not create duplicate event", async () => {
-    const response = await request(app).post('/events').send({
+    const response = await request(app).post('/event/add').send({
         name: eventOne.name,
         description: eventOne.description,
         date: eventOne.date
@@ -32,7 +32,7 @@ test("Should not create duplicate event", async () => {
 });
 
 test("Should not create an event without all credentials", async () => {
-    const response = await request(app).post('/events').send({
+    const response = await request(app).post('/event/add').send({
         name: eventOne.name,
         description: '',
         date: eventOne.date
